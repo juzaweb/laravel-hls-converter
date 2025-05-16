@@ -7,7 +7,7 @@ class HLSConverterServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        $this->app->singleton(HLSConverterService::class, function () {
+        $this->app->singleton(HLSConverter::class, function () {
             return new HLSConverterService();
         });
     }

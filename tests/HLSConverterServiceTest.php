@@ -3,7 +3,7 @@
 namespace Juzaweb\HLSConverter\Tests;
 
 use Illuminate\Support\Facades\File;
-use Juzaweb\HLSConverter\HLSConverterService;
+use Juzaweb\HLSConverter\HLSConverter;
 
 class HLSConverterServiceTest extends TestCase
 {
@@ -23,7 +23,7 @@ class HLSConverterServiceTest extends TestCase
 
     public function test_basic_hls_conversion()
     {
-        $service = new HLSConverterService();
+        $service = app(HLSConverter::class);
 
         $service->convert($this->inputVideo, $this->outputDir);
 
@@ -34,7 +34,7 @@ class HLSConverterServiceTest extends TestCase
 
     public function test_multi_resolution_hls_conversion()
     {
-        $service = new HLSConverterService();
+        $service = app(HLSConverter::class);
 
         $resolutions = [
             '720p' => ['w' => 1280, 'h' => 720, 'bitrate' => '2000k'],

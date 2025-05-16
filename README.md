@@ -39,18 +39,18 @@ composer require juzaweb/laravel-hls-converter
 ### Basic HLS Conversion
 
 ```php
-use Juzaweb\HLSConverter;
+use Juzaweb\HLSConverter\HLSConverter;
 
 $input = storage_path('app/videos/sample.mp4');
 $output = storage_path('app/hls/single');
 
-(new HLSConverter())->convert($input, $output);
+app(HLSConverter::class)->convert($input, $output);
 ```
 
 ### Convert with multiple resolutions
 
 ```php
-use Juzaweb\HLSConverter;
+use Juzaweb\HLSConverter\HLSConverter;
 
 $input = storage_path('app/videos/sample.mp4');
 $output = storage_path('app/hls/multi');
@@ -61,7 +61,7 @@ $resolutions = [
     '720p' => ['w' => 1280, 'h' => 720,  'bitrate' => '2500k'],
 ];
 
-(new HLSConverter())->convert($input, $output, $resolutions);
+app(HLSConverter::class)->convert($input, $output, $resolutions);
 ```
 
 This will generate:
@@ -86,7 +86,7 @@ composer test
 ### 📁 Example Laravel Job
 
 ```php
-use Juzaweb\HLSConverter;
+use Juzaweb\HLSConverter\HLSConverter;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -109,7 +109,7 @@ class ConvertVideoToHLSJob implements ShouldQueue
 
     public function handle()
     {
-        (new HLSConverter())->convert($this->input, $this->output, $this->resolutions);
+        app(HLSConverter::class)->convert($this->input, $this->output, $this->resolutions);
     }
 }
 ```

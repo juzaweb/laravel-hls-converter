@@ -3,7 +3,7 @@ namespace Juzaweb\HLSConverter;
 
 use Illuminate\Support\Facades\File;
 
-class HLSConverterService
+class HLSConverterService implements HLSConverter
 {
     public function convert(string $inputPath, string $outputDir, array $resolutions = []): void
     {
