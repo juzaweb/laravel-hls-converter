@@ -1,0 +1,44 @@
+name: Run Tests
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  laravel-tests:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        php: [8.1, 8.2, 8.3]
+
+    name: PHP ${{ matrix.php }} - Laravel Package Test
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: mbstring, dom, fileinfo
+          tools: composer:v2
+
+      - name: Install FFmpeg
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+
+      - name: Validate composer.json and composer.lock
+        run: composer validate --strict
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress --no-suggest
+
+      - name: Prepare test environment
+        run: |
+          mkdir -p tests
+          ffmpeg -f lavfi -i testsrc=duration=1:size=640x360:rate=25 tests/sample.mp4
+
+      - name: Run tests
+        run: vendor/bin/phpunit

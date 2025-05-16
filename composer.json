@@ -1,0 +1,21 @@
+{
+    "name": "juzaweb/laravel-hls-converter",
+    "description": "Convert video to HLS with optional multi-resolution support.",
+    "autoload": {
+        "psr-4": {
+            "Juzaweb\\HLSConverter\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Juzaweb\\HLSConverter\\Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "php": "^8.0",
+        "illuminate/support": "^9.0|^10.0|^11.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^9.14"
+    }
+}
