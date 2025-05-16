@@ -1,9 +1,9 @@
 # Laravel HLS Converter
 
-[![Tests](https://github.com/your-username/hls-converter/actions/workflows/run-tests.yml/badge.svg)](https://github.com/your-username/hls-converter/actions)
-[![License](https://img.shields.io/github/license/your-username/hls-converter.svg)](LICENSE)
+[![Tests](https://github.com/juzaweb/laravel-hls-converter/actions/workflows/run-tests.yml/badge.svg)](https://github.com/juzaweb/laravel-hls-converter/actions)
+[![License](https://img.shields.io/github/license/juzaweb/laravel-hls-converter.svg)](LICENSE)
 
-A Laravel-friendly package to convert video files to HLS format (`.m3u8` + `.ts`), with support for multiple resolutions. Built on top of [PHP-FFMpeg/PHP-FFMpeg](https://github.com/PHP-FFMpeg/PHP-FFMpeg).
+A Laravel-friendly package to convert video files to HLS format (`.m3u8` + `.ts`), with support for multiple resolutions. Built on top of [FFMpeg](https://ffmpeg.org) and [Laravel](https://laravel.com).
 
 ---
 
@@ -113,3 +113,7 @@ class ConvertVideoToHLSJob implements ShouldQueue
     }
 }
 ```
+
+## 📝 License
+
+The HLS Converter is released under the [MIT License](LICENSE.md).
